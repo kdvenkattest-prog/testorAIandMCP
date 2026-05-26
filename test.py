@@ -80,6 +80,28 @@ async def run_test(self) -> None:
 
 # Better:
 # Log securely without exposing internals
+async def start_download(self) -> bool:
+		if not self.pkg_urls:
+			return True
+		with Live(get_renderable=self._gen_table, refresh_per_second=10) as self.live:
+			async with AsyncClient(
+				timeout=20,
+				mounts=self.proxy,
+				follow_redirects=True,
+			
+				headers={"user-agent": f"nala/{__version__}"},
+			) as client:
+				loop = asyncio.get_running_loop()
+				tasks = (
+					loop.create_task(self._init_download(client, url))
+					for url in self.pkg_urls
+				)
+
+				for signal_enum in (SIGINT, SIGTERM):
+					exit_func = partial(self.interrupt, signal_enum, loop)
+					loop.add_signal_handler(signal_enum, exit_func)
+
+				return all(await gather(*tasks))
 
 
 # -----------------------------

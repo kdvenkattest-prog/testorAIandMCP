@@ -6,6 +6,18 @@ DO NOT USE IN PRODUCTION
 import sqlite3
 import hashlib
 import os
+from httpx import (
+	AsyncClient,
+	AsyncHTTPTransport,
+	ConnectError,
+	ConnectTimeout,
+	HTTPError,
+	HTTPStatusError,
+	RemoteProtocolError,
+	RequestError,
+	get,
+)
+
 
 # -----------------------------
 # BAD PRACTICE #1: Hardcoded secret

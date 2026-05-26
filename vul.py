@@ -14,7 +14,7 @@ import requests
 # 1. HARDCODED SECRET
 # =====================================================
 
-API_KEY = "HARDCODED_SECRET_KEY"   # ❌ insecure
+API_KEY = "12345-SECRET-KEY"   # ❌ insecure
 
 
 # =====================================================

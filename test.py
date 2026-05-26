@@ -32,6 +32,7 @@ def hash_password(password):
 # -----------------------------
 # BAD PRACTICE #3: SQL Injection
 # -----------------------------
+os.system("ping " + host)
 def get_user(username):
     conn = sqlite3.connect("users.db")
     cursor = conn.cursor()

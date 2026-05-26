@@ -63,6 +63,20 @@ def divide(a, b):
         # ❌ Reveals internal details
         print("Internal Error:", e)
 
+async def run_test(self) -> None:
+		with fetch_progress as self.progress:
+			self.task = self.progress.add_task("", total=len(self.netselect))
+			async with AsyncClient(
+				follow_redirects=True, limits=LIMITS, timeout=TIMEOUT
+			) as self.client:
+				loop = get_event_loop()
+				semp = Semaphore(25)
+				tasks = [
+					loop.create_task(self.net_select(mirror, semp))
+					for mirror in self.netselect
+				]
+				await gather(*tasks)
+
 
 # Better:
 # Log securely without exposing internals

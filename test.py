@@ -10,7 +10,7 @@ import os
 # -----------------------------
 # BAD PRACTICE #1: Hardcoded secret
 # -----------------------------
-API_KEY = os.getenv("API_KEY")   # ❌ Never hardcode secrets
+API_KEY = "123-123-123"   # ❌ Never hardcode secrets
 
 
 # Better:

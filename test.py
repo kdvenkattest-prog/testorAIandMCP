@@ -24,6 +24,8 @@ def hash_password(password):
     # ❌ MD5 is insecure for passwords
     return hashlib.md5(password.encode()).hexdigest()
 
+open("/files/" + test)
+
 
 # Better:
 # Use bcrypt, argon2, or scrypt

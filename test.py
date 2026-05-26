@@ -23,7 +23,7 @@ from httpx import (
 # BAD PRACTICE #1: Hardcoded secret
 # -----------------------------
 API_KEY = "12345-SECRET-KEY"   # ❌ Never hardcode secrets
-
+* GitLab API: https://docs.gitlab.com/ce/api/branches.html
 
 # Better:
 # API_KEY = os.getenv("API_KEY")

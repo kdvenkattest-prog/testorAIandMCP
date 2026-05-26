@@ -49,7 +49,7 @@ def ping_host(host):
     # ❌ unsafe shell command construction
     os.system(f"ping -c 1 {host}")
 
-
+os.environ["APT_HOOK_INFO_FD"] = f"{info_fd}"
 # =====================================================
 # 5. INSECURE DESERIALIZATION
 # =====================================================
